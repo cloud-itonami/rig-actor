@@ -2,7 +2,7 @@
 
 A **free auto-rig generation** loop actor for
 [`network-isekai`](https://github.com/gftdcojp/network-isekai), gftdcojp's
-third of seven per-modality asset actors (ADR-2607122200). Persona: **セキ
+third of seven per-modality asset actors (ADR-2607122400). Persona: **セキ
 (Seki)**, 骨師 (rigger) — "骨と皮を繋ぐ職人。動きが自然に伝わる骨格だけを通す
 — 派手さより関節の可動域を信じる" (see `resources/persona.edn`). Sibling
 actors: `gftd-illust-actor` (image), `gftd-sculpt-actor` (3D mesh),
@@ -98,7 +98,7 @@ anything.
 Unlike a typical actor repo, `assets/` here is **git-annex + Backblaze B2**
 (`-c text2git`: code/EDN stay plain git, binaries get annexed) — accepted
 assets are saved straight into this repo and pushed to B2, so "actor's own
-git repo" and "asset storage" are the same thing (ADR-2607122200 §5).
+git repo" and "asset storage" are the same thing (ADR-2607122400 §5).
 `assets/<id>.edn` is written in the `network-isekai` `isekai.asset` manifest
 shape so a later Asset Hub import needs no conversion.
 
@@ -133,7 +133,7 @@ CACAO identity is self-minted to `.rig/identity.edn` on first run
 
 ## Design
 
-ADR-2607122200 (`network-isekai 向け murakumo 生成アセット持続ループ actor
+ADR-2607122400 (`network-isekai 向け murakumo 生成アセット持続ループ actor
 群`) is the SSoT for this actor and its six siblings. Direct code ancestry:
 `gftd-illust-actor` (actor #1, the reference this repo is a faithful port
 of, modulo the mesh-input/preset-not-prompt difference above),
@@ -145,7 +145,7 @@ shape).
 ### A note on `rig.murakumo`'s `modality`
 
 `cloud-murakumo`'s `resources/murakumo.edn` keys this actor's engine entry
-`:autorig` under `:apps :generation :functions` (matching ADR-2607122200's
+`:autorig` under `:apps :generation :functions` (matching ADR-2607122400's
 persona table and this actor's own domain name), but that entry's
 `:fn/modality` value is `:rig`, not `:autorig`
 (`:fn/engine :unirig :fn/modality :rig`). `cloud-murakumo.gen/fn-for-modality`

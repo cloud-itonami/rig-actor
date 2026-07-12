@@ -1,7 +1,7 @@
 (ns rig.ledger
   "The append-only genealogy ledger — plain EDN lines in a git-tracked
   (text2git — never annexed) file. This repo's own git history plus this
-  file together ARE the immutable audit trail (ADR-2607122200 §3); no
+  file together ARE the immutable audit trail (ADR-2607122400 §3); no
   Datomic/langchain.db indirection needed for a single-writer file-per-actor
   ledger."
   (:require [clojure.java.io :as io]

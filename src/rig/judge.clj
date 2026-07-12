@@ -10,7 +10,7 @@
   bone-density preset text) for persona-fit and plausibility, not the actual
   rigged VRM geometry/bone weights the generation job produced. A real
   perceptual/structural judge (skeleton-validity check, a vision-capable
-  critique of the rigged mesh) is follow-up work — see ADR-2607122200
+  critique of the rigged mesh) is follow-up work — see ADR-2607122400
   Consequences."
   (:require [cheshire.core :as json]
             [clojure.string :as str])

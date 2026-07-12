@@ -1,5 +1,5 @@
 (ns rig.generate
-  "Pure-ish candidate builder for one co-scientist round (ADR-2607122200 §2/§3),
+  "Pure-ish candidate builder for one co-scientist round (ADR-2607122400 §2/§3),
   with ONE deliberate deviation from the illust reference this actor ports:
   auto-rigging is not text-to-X. UniRig (`:fn/engine :unirig`, murakumo.edn's
   `:autorig` app) takes an EXISTING glb/vrm mesh as input (`:refs [cid]`), it
