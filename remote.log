@@ -1,0 +1,1 @@
+7a5432a8-23de-4481-ba47-f998c4ea072d bucket=gftdcojp-m365-annex chunk=50MiB datacenter=US encryption=none fileprefix=gftd-rig-actor/ host=s3.us-west-004.backblazeb2.com name=b2 port=443 protocol=https signature=v4 storageclass=STANDARD type=S3 timestamp=1783855023s
