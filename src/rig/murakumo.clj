@@ -46,20 +46,31 @@
       (throw (ex-info "no :rig generation function in murakumo.edn" {:modality modality}))))
 
 (defn- kotoba-url [] (or (System/getenv "MURAKUMO_KOTOBA_URL") "https://kotobase.net"))
-(defn- kotoba-graph [] (or (System/getenv "MURAKUMO_KOTOBA_GRAPH") "gftd-murakumo"))
+(defn- kotoba-db-name [] (or (System/getenv "MURAKUMO_KOTOBA_DB_NAME") "gftd-murakumo"))
 
 (defn conn
   "queue-kotoba connection map. Auth: MURAKUMO_KOTOBA_TOKEN (bearer, the
   simplest operational path) preferred; falls back to a CACAO seed
-  (MURAKUMO_KOTOBA_SEED) if the operator has wired the `kotoba` CLI's
-  did-derive/cacao-sign path instead (cloud_murakumo.queue-kotoba/fresh-cacao)."
+  (MURAKUMO_KOTOBA_SEED, in-process JVM signing via
+  cloud_murakumo.queue-kotoba/fresh-cacao — no `kotoba` CLI needed, see that
+  ns's own 2026-07-12 fix). `:graph` is the CID queue-kotoba's own reads
+  (`.q`) need explicitly; for writes the server recomputes it from the
+  verified CACAO issuer + :db-name and ignores whatever :graph the client
+  sends, but reads have no CACAO to derive it from, so this must compute the
+  SAME CID client-side (qk/canonical-tenant-graph) whenever a seed is
+  available — a bare :db-name string (the pre-fix behavior) is not a valid
+  graph CID and would make reads look at the wrong (empty) graph."
   []
-  (qk/conn (kotoba-url) (kotoba-graph)
-           (cond-> {}
-             (System/getenv "MURAKUMO_KOTOBA_TOKEN")
-             (assoc :token (System/getenv "MURAKUMO_KOTOBA_TOKEN"))
-             (System/getenv "MURAKUMO_KOTOBA_SEED")
-             (assoc :seed (System/getenv "MURAKUMO_KOTOBA_SEED")))))
+  (let [db-name (kotoba-db-name)
+        seed (System/getenv "MURAKUMO_KOTOBA_SEED")
+        graph (if seed
+                (qk/canonical-tenant-graph (qk/did-derive seed) db-name)
+                (System/getenv "MURAKUMO_KOTOBA_GRAPH"))]
+    (qk/conn (kotoba-url) graph
+             (cond-> {:db-name db-name}
+               (System/getenv "MURAKUMO_KOTOBA_TOKEN")
+               (assoc :token (System/getenv "MURAKUMO_KOTOBA_TOKEN"))
+               seed (assoc :seed seed)))))
 
 (defn submit!
   "candidate ({:prompt :params}) -> the enqueued :gen.job map (has
