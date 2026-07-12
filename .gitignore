@@ -1,0 +1,9 @@
+;; .rig/ holds BOTH the CACAO private key (identity.edn, never commit)
+;; AND ephemeral loop lease/state files — neither belongs in git.
+;; ledger/events.edn itself IS the audit trail and is intentionally
+;; NOT ignored (plain git text2git, see rig.ledger's docstring).
+.rig/
+.cpcache/
+target/
+.clj-kondo/.cache/
+*.class

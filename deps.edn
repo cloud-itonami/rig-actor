@@ -1,0 +1,19 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.4"}
+        cheshire/cheshire {:mvn/version "5.13.0"}
+        ;; sibling gftdcojp repo, local/root dep (same pattern as cloud-itonami's
+        ;; io.github.gftdcojp/cloud-mamori dependency) — reuse the already-proven
+        ;; job normalization + kotoba-queue submit/poll wire protocol instead of
+        ;; re-deriving it here.
+        io.github.gftdcojp/cloud-murakumo {:local/root "../cloud-murakumo"}}
+ :aliases
+ {:run {:main-opts ["-m" "rig.main"]}
+  :test {:extra-paths ["test"]
+         :extra-deps {io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}
+  :lint {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2024.11.14"}}
+         :main-opts    ["-m" "clj-kondo.main"
+                        "--lint" "src" "test"
+                        "--fail-level" "error"]}}}

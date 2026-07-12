@@ -1,0 +1,18 @@
+(ns rig.main
+  "CLI entrypoint. `clojure -M:run tick|run|status`.
+
+    tick   — one durable-loop step, then exit (cron/launchd-friendly)
+    run    — stay resident, tick! on an interval (ASSET_ACTOR_DAILY_BUDGET,
+             default 8 gen jobs/day, governs how many rounds actually submit)
+    status — print the ledger tail + current loop state"
+  (:require [rig.loop :as loop]
+            [clojure.pprint :as pprint])
+  (:gen-class))
+
+(defn -main [& [cmd]]
+  (case cmd
+    "tick"   (println (loop/tick!))
+    "run"    (loop/run-forever!)
+    "status" (pprint/pprint (loop/status))
+    (do (println "usage: clojure -M:run tick|run|status")
+        (System/exit 1))))
