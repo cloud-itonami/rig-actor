@@ -2,7 +2,7 @@
   "JVM I/O edge: persist an ACCEPTED (governor-passed) asset into assets/ —
   raw bytes (annexed to B2 by this repo's own .gitattributes text2git rule)
   + an isekai.asset-shaped EDN manifest sidecar (plain git text) — then
-  `datalad save` + `datalad push --to b2` (ADR-2607122400 §5).
+  `datalad save` + `datalad push --to b2` (ADR-2607123000 §5).
 
   Rejected/losing candidates are NEVER written here — only the ledger
   records them (rig.ledger) — so B2 isn't paid-for-and-polluted with
@@ -21,7 +21,7 @@
 
 (defn ->isekai-manifest
   "asset (governor-passed, augmented) -> the network-isekai `isekai.asset`
-  manifest shape (ADR-2607122400 §5 — kept import-ready, actual import into
+  manifest shape (ADR-2607123000 §5 — kept import-ready, actual import into
   network-isekai's Asset Hub is explicit follow-up, not wired here)."
   [{:keys [id kind format title license tags gen-job-id prompt created]}]
   {:asset/id id

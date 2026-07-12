@@ -1,13 +1,13 @@
 (ns rig.murakumo
   "JVM I/O edge: submit/poll generation jobs against the REAL murakumo
-  distributed generation backend (ADR-2607122400 §3), reusing
+  distributed generation backend (ADR-2607123000 §3), reusing
   `cloud-murakumo.gen`/`cloud-murakumo.queue-kotoba` verbatim (sibling
   gftdcojp repo, `:local/root` dep — see deps.edn) rather than re-deriving
   the job-normalization / kotoba-queue wire protocol here.
 
   NOTE on `modality`: murakumo.edn's `:apps :generation :functions` entry for
   this actor's engine is keyed `:autorig` (the app-level name, matching this
-  actor's own domain and ADR-2607122400's persona table), but its
+  actor's own domain and ADR-2607123000's persona table), but its
   `:fn/modality` value is `:rig` (see
   orgs/gftdcojp/cloud-murakumo/resources/murakumo.edn — `:fn/engine :unirig
   :fn/modality :rig`). `cloud-murakumo.gen/fn-for-modality` resolves by
@@ -24,7 +24,7 @@
   up and consuming that queue for jobs to ever leave :queued. Same
   operational dependency ai-gftd-apex already has on cloud-murakumo.
 
-  Also HONEST LIMIT (ADR-2607122400 §2, autorig-specific): unlike the other
+  Also HONEST LIMIT (ADR-2607123000 §2, autorig-specific): unlike the other
   six actors, this one does not generate a mesh from nothing — every
   submitted job carries `:refs [input-mesh-cid]` resolved by rig.generate
   from RIG_INPUT_MESH_CID. See rig.generate's docstring."
