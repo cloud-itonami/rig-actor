@@ -5,7 +5,7 @@
         ;; io.github.gftdcojp/cloud-mamori dependency) — reuse the already-proven
         ;; job normalization + kotoba-queue submit/poll wire protocol instead of
         ;; re-deriving it here.
-        io.github.gftdcojp/cloud-murakumo {:local/root "../cloud-murakumo"}}
+        io.github.gftdcojp/cloud-murakumo {:local/root "../../gftdcojp/cloud-murakumo"}}
  :aliases
  {:run {:main-opts ["-m" "rig.main"]}
   :test {:extra-paths ["test"]
