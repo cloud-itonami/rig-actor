@@ -5,7 +5,15 @@
         ;; io.github.gftdcojp/cloud-mamori dependency) — reuse the already-proven
         ;; job normalization + kotoba-queue submit/poll wire protocol instead of
         ;; re-deriving it here.
-        io.github.gftdcojp/cloud-murakumo {:local/root "../../network-awai/cloud-murakumo"}}
+        io.github.gftdcojp/cloud-murakumo {:local/root "../../network-awai/cloud-murakumo"}
+        ;; 座標二重化の解消（ADR-2608081000）。この lib は依存グラフの中で
+        ;; :local/root と :git/sha の両方で宣言されており、どちらも推移依存に
+        ;; 落ちるため tools.deps が 'Unable to compare versions' で classpath を
+        ;; 組めなかった（= この repo の suite は 1 度も走っていなかった）。
+        ;; top-level に置けば深さ 1 で勝つ。
+        io.github.kotoba-lang/ed25519
+        {:local/root "../../kotoba-lang/org-ietf-ed25519"}
+        }
  :aliases
  {:run {:main-opts ["-m" "rig.main"]}
   :test {:extra-paths ["test"]
