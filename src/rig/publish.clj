@@ -4,7 +4,7 @@
   re-validates what the governor already checked; refuses to publish
   anything the governor held — callers only reach this ns after
   rig.governor/ok? is true)."
-  (:require [cheshire.core :as json]
+  (:require [json.compat :as json]
             [rig.cacao :as cacao]
             [rig.aozora :as aozora]
             [rig.publisher :as pub-proto]))
