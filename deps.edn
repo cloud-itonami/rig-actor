@@ -12,7 +12,13 @@
         ;; 落ちるため tools.deps が 'Unable to compare versions' で classpath を
         ;; 組めなかった（= この repo の suite は 1 度も走っていなかった）。
         ;; top-level に置けば深さ 1 で勝つ。
-        io.github.kotoba-lang/ed25519
+        ;; The repository was renamed kotoba-lang/ed25519 -> kotoba-lang/org-ietf-ed25519.
+        ;; The :local/root already points at the new name; only the coordinate
+        ;; symbol still said the old one. Two symbols naming one repository are
+        ;; two libraries to tools.deps, so ed25519.core was landing on the
+        ;; classpath twice -- once from this checkout, once from the
+        ;; org-ietf-ed25519 :git/sha another dependency in the closure pins.
+        io.github.kotoba-lang/org-ietf-ed25519
         {:local/root "../../kotoba-lang/org-ietf-ed25519"}
         }
  :aliases
