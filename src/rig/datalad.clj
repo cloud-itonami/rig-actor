@@ -28,12 +28,12 @@
    :asset/kind kind
    :asset/format format
    :asset/title title
-   :asset/author "gftd-rig-actor"
+   :asset/author "rig-actor"
    :asset/license license
    :asset/tags (vec tags)
    :asset/source :gen
    :asset/gen {:stage :autorig :job-key gen-job-id :prompt prompt
-               :provenance "murakumo/unirig via gftd-rig-actor co-scientist loop"}
+               :provenance "murakumo/unirig via rig-actor co-scientist loop"}
    :asset/created created})
 
 (defn write-asset!

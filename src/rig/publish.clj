@@ -13,14 +13,14 @@
 
 (defn load-or-create-identity! [] (cacao/load-or-create-identity! identity-path))
 
-(def display-name "gftd-rig-actor — セキ")
+(def display-name "rig-actor — セキ")
 
 (def description
   (str "🦴 AI-GENERATED auto-rig configurations for network-isekai, applied to "
        "existing meshes via a co-scientist-style generation loop over the "
        "murakumo fleet (UniRig), gated by an independent AssetGovernor before "
        "anything is published. Every asset here is free (:cc0/:cc-by) — "
-       "github.com/gftdcojp/gftd-rig-actor"))
+       "github.com/cloud-itonami/rig-actor"))
 
 (defn json-opts []
   {:json-write json/generate-string
