@@ -4,7 +4,7 @@
   auto-rigging is not text-to-X. UniRig (`:fn/engine :unirig`, murakumo.edn's
   `:autorig` app) takes an EXISTING glb/vrm mesh as input (`:refs [cid]`), it
   does not conjure a mesh from a text prompt. There is no upstream pipeline
-  yet that automatically hands this actor a mesh from gftd-sculpt-actor's own
+  yet that automatically hands this actor a mesh from sculpt-actor's own
   output — that cross-actor wiring is explicit follow-up, not built here (see
   README HONEST LIMITS).
 
@@ -29,7 +29,7 @@
   (:require [clojure.string :as str]))
 
 (defn input-mesh-cid
-  "The single existing mesh CID (e.g. a CID from gftd-sculpt-actor's own
+  "The single existing mesh CID (e.g. a CID from sculpt-actor's own
   accepted output) this round's candidates will rig. Wrapped as a fn (not
   inlined into round-candidates) so tests can with-redefs it instead of
   mutating process env — see test/rig/generate_test.clj."
