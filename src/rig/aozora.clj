@@ -6,27 +6,19 @@
   from kawaraban.aozora <- tashikame.aozora, and of gftd-illust-actor's own
   `illust.aozora`) — see that namespace's docstring for the full design
   rationale."
-  (:require [clojure.string :as str]
+    (:require [clojure.string :as str]
+            [kotoba.net.jvm-host :as jvm-host]
             [rig.cacao :as cacao]
             [rig.publisher :as publisher])
-  (:import [java.net URI]
-           [java.net.http HttpClient HttpRequest HttpRequest$BodyPublishers
-            HttpResponse$BodyHandlers]
-           [java.time Instant]
+  (:import [java.time Instant]
            [java.util UUID]))
 
 (def default-pds "https://pds.aozora.app")
 
 (defn jvm-http-fn [{:keys [url method headers body]}]
-  (let [b (HttpRequest/newBuilder (URI/create url))]
-    (doseq [[k v] headers] (.header b k v))
-    (let [req  (-> b (.method (str/upper-case (name (or method :post)))
-                             (if body
-                               (HttpRequest$BodyPublishers/ofString body)
-                               (HttpRequest$BodyPublishers/noBody)))
-                   (.build))
-          resp (.send (HttpClient/newHttpClient) req (HttpResponse$BodyHandlers/ofString))]
-      {:status (.statusCode resp) :body (.body resp)})))
+  ;; delegated to kotoba.net.jvm-host (the workspace's single java.net.http site)
+  ((jvm-host/http-transport {:timeout-seconds 120})
+   {:url url :method (or method :post) :headers headers :body body}))
 
 (defn mint-session!
   [{:keys [pds identity json-write json-read http-fn] :or {pds default-pds http-fn jvm-http-fn}}]

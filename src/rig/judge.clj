@@ -13,10 +13,9 @@
   critique of the rigged mesh) is follow-up work — see ADR-2607123000
   Consequences."
   (:require [json.compat :as json]
-            [clojure.string :as str])
-  (:import [java.net URI]
-           [java.net.http HttpClient HttpRequest HttpRequest$BodyPublishers HttpResponse$BodyHandlers]
-           [java.time Duration]))
+            [clojure.string :as str]
+            [kotoba.net.jvm-host :as jvm-host])
+  )
 
 (defn- gateway-url [] (or (System/getenv "MURAKUMO_GATEWAY_URL") "http://localhost:8790"))
 
@@ -25,13 +24,10 @@
   (or (System/getenv "MURAKUMO_MEDIA_MODEL") "gemma4:12b-it-qat"))
 
 (defn jvm-http-fn [url body-str]
-  (let [req (-> (HttpRequest/newBuilder (URI/create url))
-                (.timeout (Duration/ofSeconds 60))
-                (.header "Content-Type" "application/json")
-                (.POST (HttpRequest$BodyPublishers/ofString body-str))
-                .build)
-        resp (.send (HttpClient/newHttpClient) req (HttpResponse$BodyHandlers/ofString))]
-    {:status (.statusCode resp) :body (.body resp)}))
+  ;; delegated to kotoba.net.jvm-host (the workspace's single java.net.http site)
+  ((jvm-host/http-transport {:timeout-seconds 60})
+   {:url url :method :post :headers {"Content-Type" "application/json"}
+    :body body-str}))
 
 (defn- extract-content [parsed] (get-in parsed ["choices" 0 "message" "content"]))
 
