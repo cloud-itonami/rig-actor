@@ -35,7 +35,7 @@
   )
 
 (def modality :rig)
-(def actor-id "gftd-rig-actor")
+(def actor-id "rig-actor")
 
 (defn function
   "This actor's murakumo.edn `:apps :generation` function entry (SSoT stays

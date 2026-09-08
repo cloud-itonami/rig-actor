@@ -1,5 +1,5 @@
 (ns rig.cacao
-  "Agent-side CACAO issuance (JVM) for gftd-rig-actor. 1:1 port of the
+  "Agent-side CACAO issuance (JVM) for rig-actor. 1:1 port of the
   PROVEN `cloud_itonami.media.cacao` (itself ported from `kawaraban.cacao` /
   `tashikame.cacao` / `kotoba.cacao`, and of gftd-illust-actor's own
   `illust.cacao` — this actor's direct sibling port) — deliberately NOT built
@@ -140,7 +140,7 @@
   (graph-cid-from-name (str "kotobase/db/" did "/" db-name)))
 
 (def default-db-name
-  "gftd-rig-actor's own database."
+  "rig-actor's own database."
   "rig")
 
 (defn generate-identity []
