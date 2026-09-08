@@ -8,7 +8,7 @@
 
   Single invariant: the actor never commits/publishes an asset this governor
   would reject."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (def allowed-licenses #{:cc0 :cc-by :public-domain})
 (def allowed-formats #{"vrm" "glb"})
