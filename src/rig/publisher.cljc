@@ -18,7 +18,7 @@
   Publisher
   (publish! [_ record]
     (swap! a conj record)
-    {:uri (str "at://mock/gftd-rig-actor/" (hash record))
+    {:uri (str "at://mock/rig/" (hash record))
      :cid (str "mock:" (hash record))}))
 
 (defn mock-publisher
