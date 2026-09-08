@@ -1,7 +1,7 @@
 (ns rig.cacao
   "Agent-side CACAO issuance (JVM) for rig-actor. 1:1 port of the
   PROVEN `cloud_itonami.media.cacao` (itself ported from `kawaraban.cacao` /
-  `tashikame.cacao` / `kotoba.cacao`, and of gftd-illust-actor's own
+  `tashikame.cacao` / `kotoba.cacao`, and of illust-actor's own
   `illust.cacao` — this actor's direct sibling port) — deliberately NOT built
   on `io.github.kotoba-lang/org-chainagnostic-cacao`, since this SIWE+CBOR
   implementation is the one with real published-record history against
