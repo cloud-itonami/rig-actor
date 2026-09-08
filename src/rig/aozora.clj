@@ -3,7 +3,7 @@
   net.rig.asset.publish collection on an aozora PDS via
   com.atproto.repo.createRecord, authenticated by a depth-1 self-minted
   CACAO. 1:1 port of the PROVEN `cloud_itonami.media.aozora` (itself ported
-  from kawaraban.aozora <- tashikame.aozora, and of gftd-illust-actor's own
+  from kawaraban.aozora <- tashikame.aozora, and of illust-actor's own
   `illust.aozora`) — see that namespace's docstring for the full design
   rationale."
     (:require [clojure.string :as str]
