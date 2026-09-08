@@ -6,7 +6,7 @@
   from kawaraban.aozora <- tashikame.aozora, and of illust-actor's own
   `illust.aozora`) — see that namespace's docstring for the full design
   rationale."
-    (:require [clojure.string :as str]
+    (:require [kotoba.lang.text :as str]
             [kotoba.net.jvm-host :as jvm-host]
             [rig.cacao :as cacao]
             [rig.publisher :as publisher])

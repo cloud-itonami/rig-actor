@@ -26,7 +26,7 @@
   budget/pending logic already tolerates a round with 0 submitted candidates
   (nothing gets submitted that tick, next tick tries again), so no special
   casing is needed in rig.loop for this."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn input-mesh-cid
   "The single existing mesh CID (e.g. a CID from sculpt-actor's own
