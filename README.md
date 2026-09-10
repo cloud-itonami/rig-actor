@@ -113,7 +113,7 @@ datalad push --to b2           # push new bytes after a local save
 RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> clojure -M:run tick   # one durable-loop step (cron/launchd)
 RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> clojure -M:run run    # stay resident, tick on an interval
 clojure -M:run status   # print ledger tail + loop state
-clojure -M:test         # offline, fully faked (no network) — see test/rig/loop_test.clj
+clojure -M:test         # offline, fully faked (no network) — see test/rig/loop_test.kotoba
 clojure -M:lint         # clj-kondo, errors fail
 ```
 
