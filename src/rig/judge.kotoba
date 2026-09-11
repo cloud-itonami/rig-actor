@@ -1,7 +1,7 @@
 (ns rig.judge
   "JVM I/O edge: score a candidate for persona-fit/technical quality via the
   murakumo chat gateway (same synchronous OpenAI-chat-completions proxy
-  `cloud_itonami.media.murakumo` uses — `bb murakumo infer gateway`,
+  `cloud_itonami.media.murakumo` uses — `kbb -M:murakumo infer gateway`,
   MURAKUMO_GATEWAY_URL to override).
 
   HONEST LIMIT (state this, do not pretend otherwise — same discipline as

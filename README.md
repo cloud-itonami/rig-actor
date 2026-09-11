@@ -110,11 +110,11 @@ datalad push --to b2           # push new bytes after a local save
 ## Running
 
 ```sh
-RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> clojure -M:run tick   # one durable-loop step (cron/launchd)
-RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> clojure -M:run run    # stay resident, tick on an interval
-clojure -M:run status   # print ledger tail + loop state
-clojure -M:test         # offline, fully faked (no network) — see test/rig/loop_test.kotoba
-clojure -M:lint         # clj-kondo, errors fail
+RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> kbb -M:run tick   # one durable-loop step (cron/launchd)
+RIG_INPUT_MESH_CID=<cid-of-an-existing-mesh> kbb -M:run run    # stay resident, tick on an interval
+kbb -M:run status   # print ledger tail + loop state
+kbb -M:test         # offline, fully faked (no network) — see test/rig/loop_test.kotoba
+kbb -M:lint         # clj-kondo, errors fail
 ```
 
 Without `RIG_INPUT_MESH_CID` set, `tick`/`run` still work (lease/budget
