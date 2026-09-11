@@ -232,7 +232,7 @@
 (defn run-forever!
   "Repeat tick! forever with `interval-ms` sleeps between ticks (default 10
   min). Intended for a long-lived process (launchd/systemd on a fleet node);
-  `clojure -M:run tick` (single tick, cron-friendly) is the alternative — see
+  `kbb -M:run tick` (single tick, cron-friendly) is the alternative — see
   rig.main."
   ([] (run-forever! (* 10 60 1000)))
   ([interval-ms]

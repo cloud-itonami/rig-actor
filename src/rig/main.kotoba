@@ -1,5 +1,5 @@
 (ns rig.main
-  "CLI entrypoint. `clojure -M:run tick|run|status`.
+  "CLI entrypoint. `kbb -M:run tick|run|status`.
 
     tick   — one durable-loop step, then exit (cron/launchd-friendly)
     run    — stay resident, tick! on an interval (ASSET_ACTOR_DAILY_BUDGET,
@@ -14,5 +14,5 @@
     "tick"   (println (loop/tick!))
     "run"    (loop/run-forever!)
     "status" (pprint/pprint (loop/status))
-    (do (println "usage: clojure -M:run tick|run|status")
+    (do (println "usage: kbb -M:run tick|run|status")
         (System/exit 1))))
