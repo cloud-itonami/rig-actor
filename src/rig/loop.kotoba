@@ -46,7 +46,7 @@
 
 (defn acquire-lease!
   "false if another process holds a fresh lease; true (and writes the lease
-  file) otherwise. Single-writer discipline (root CLAUDE.md's 'worktree per
+  file) otherwise. Single-writer discipline (root AGENTS.md's 'worktree per
   agent, never edit a shared checkout concurrently' applied to this loop)."
   []
   (let [f (io/file lease-path)]

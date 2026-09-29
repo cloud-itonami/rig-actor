@@ -14,7 +14,7 @@ ledger" containment pattern as this workspace's other actors
 (`gftd-talent-actor`, `wami-actor`, `cloud-itonami`, `gftd-illust-actor`) —
 here it is **co-scientist tournament ⊣ AssetGovernor**, run by a **durable
 outer loop** (not a StateGraph — murakumo generation jobs are async,
-minutes-scale, and this workspace's CLAUDE.md is explicit that long-running
+minutes-scale, and this workspace's AGENTS.md is explicit that long-running
 work belongs in a lease/tick/budget loop, not a StateGraph interrupt).
 
 ## The core contract
