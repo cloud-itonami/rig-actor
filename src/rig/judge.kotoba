@@ -20,7 +20,7 @@
 (defn- gateway-url [] (or (System/getenv "MURAKUMO_GATEWAY_URL") "http://localhost:8790"))
 
 (def default-model
-  "Never hardcode elsewhere (llm-model-ssot discipline, root CLAUDE.md)."
+  "Never hardcode elsewhere (llm-model-ssot discipline, root AGENTS.md)."
   (or (System/getenv "MURAKUMO_MEDIA_MODEL") "gemma4:12b-it-qat"))
 
 (defn jvm-http-fn [url body-str]
